@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="plugin/jQuery/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="plugin/bootstrap43/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="plugin/css/style.css">
+	<title>Bullseye</title>
+	<script type="text/javascript" src="plugin/bootstrap43/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="plugin/three/three.js"></script>
+	<script type="text/javascript">
+					
+		var max = 0;
+		var max2 = 0;
+		var bol = false;
+		var positioncub1=0;
+		
+
+		var scene;
+
+		var renderer;
+
+		var camera;
+
+		$(document).ready(function() {
+
+			//Definir el tamaño del canvas
+
+			var canvasSize = {
+				width: window.innerWidth,
+				height: window.innerHeight
+			};
+
+			//Inicializamos el renderer
+
+			renderer = new THREE.WebGLRenderer();
+			renderer.setClearColor( new THREE.Color(0, 0, 0) );
+
+			renderer.setSize(
+				canvasSize.width,
+				canvasSize.height
+			);
+
+			//Inicializamos la camara
+			camera = new THREE.PerspectiveCamera(
+				75,
+				canvasSize.width / canvasSize.height,
+				0.1,
+				100
+			);
+
+			//Inicializamos la escena
+			scene = new THREE.Scene();
+
+			//Ponemos el canvas de three dentro de nuestro div
+
+			$('#scene-section').append( renderer.domElement);
+			//------------------------------------------------
+
+			var ambientLight = new THREE.AmbientLight(
+				new THREE.Color(1, 1, 1),
+				1.0
+			);
+
+			var directionalLight = new THREE.DirectionalLight(
+				new THREE.Color(1, 1, 0),
+				0.4
+			);
+
+			//Direccion de la luz direccional
+			directionalLight.position.set(0, 0, 1);
+
+			scene.add(ambientLight);
+			scene.add(directionalLight);
+
+			//la geometria guarda los vertices a dibujar
+
+			var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+			var material = new THREE.MeshLambertMaterial({
+				color: new THREE.Color(0.7, 0.0, 0.0)
+			});
+
+			var cube = new THREE.Mesh(geometry, material);
+
+			//Cubo02
+			var material2 = new THREE.MeshPhongMaterial({
+				color: new THREE.Color(0.5, 0.5, 0.5),
+				specular: new THREE.Color(1, 1, 1),
+				shininess: 500
+			});
+
+			var cube2 = new THREE.Mesh(geometry, material2);
+
+			cube.position.x= -1;
+			cube2.position.x= 1;
+
+			scene.add(cube2);
+
+			camera.position.z = 2
+
+			scene.add(cube);
+
+			cube.name="Cubo01";
+			cube2.name="Cubo02";
+
+			render();
+		});
+
+		var direccionCubo01 = 1;
+		var direccionCubo02= -1;
+		function render() {
+			requestAnimationFrame(render);
+			//Aqui se va a poner toda la logica a dibujar
+			var cubo01 = scene.getObjectByName('Cubo01');
+			var cubo02 = scene.getObjectByName('Cubo02');
+
+			cubo01.position.y += 0.01 * direccionCubo01;
+			cubo02.position.y += 0.01 * direccionCubo02;
+
+			if(cubo01.position.y >2)
+			{
+				direccionCubo01=-1; 
+			}
+			
+			if(cubo01.position.y < -2)
+			{
+				direccionCubo01=1; 
+			}
+
+			if(cubo02.position.y < -2)
+			{
+				direccionCubo02=1; 
+			}
+			
+			if(cubo02.position.y > 2)
+			{
+				direccionCubo02=-1; 
+			}
+
+
+			
+			//Dibujamos con el objeto renderer
+			renderer.render(scene,camera);
+		}
+	</script>
+	
+</head>
+<body>
+	<!-- canvas -->
+	<div id="scene-section"/>
+	<!-- fin canvas -->
+</body>
+</html>
