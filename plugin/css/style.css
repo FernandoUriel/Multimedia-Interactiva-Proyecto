@@ -1,5 +1,5 @@
 
-body{
+body#indexBody{
 background-image: url('https://wallpaperaccess.com/full/213850.jpg');
 background-size:cover;
 width: 100%;
@@ -29,11 +29,9 @@ align-content: center;
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
    background-color:rgba(0,0,50,0.5);
- }ntrolContainer{
+ }
 
-overflow-y: auto;
-}
-#controlContainer{
+#modalControls{
 
 overflow-y: auto;
 }
