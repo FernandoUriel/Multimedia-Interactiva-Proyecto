@@ -17,6 +17,7 @@
 		var positioncub1=0;
 		
 		var isPlay=true;
+		var isPause=false;
 
 		var scene;
 
@@ -33,10 +34,14 @@
 			$('#reanudarJuego').click(function(){
 			$('#modalLogIn').modal('hide'); 
 			isPlay=true;
+			isPause=false;
+			
 			});
 			$('#pauseClose').click(function(){
 			$('#modalLogIn').modal('hide'); 
 			isPlay=true;
+			isPause=false;
+			
 			});
 			/*Fin Pausas Eventos*/
 
@@ -185,11 +190,15 @@
 		function onDocumentKeyDown(event) {
 		    var keyCode = event.which;
 		    if (keyCode == 32) {
+		    	if(isPause==false){
 		    	isPlay=false;
+		    	isPause=true;
 		       	$('#modalLogIn').modal('show'); 
 				}
-		     
+			}
+		     	
 		};
+	
 		function render() {
 			requestAnimationFrame(render);
 			//Aqui se va a poner toda la logica a dibujar
