@@ -9,39 +9,217 @@
 	<title>Bullseye</title>
 	<script type="text/javascript" src="plugin/bootstrap43/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="plugin/three/three.js"></script>
+	<script type="text/javascript">
+		var isMenu=false;
+			$(document).ready(function() {
+
+			if(isMenu==false)
+			{
+				$('#modalMenu1').modal('show');
+			}
+
+			/*Configuracion Eventos*/
+			$('#confModal').click(function(){
+				$('#modalMenu1').modal('hide'); 
+				$('#modalConfig').modal('show');
+			});
+			$('#backConfigToPause').click(function(){
+				$('#modalConfig').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			$('#confClose').click(function(){
+				$('#modalConfig').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			/*Fin Configuracion Eventos*/
+
+			/*Puntuaciones Eventos*/
+			$('#rankModal').click(function(){
+				$('#modalMenu1').modal('hide'); 
+				$('#modalRanking').modal('show');
+			});
+			$('#backRankingToPause').click(function(){
+				$('#modalRanking').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			$('#rankingClose').click(function(){
+				$('#modalRanking').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			/*Fin Puntuaciones Eventos*/
+
+			/*Controles Eventos*/
+			$('#contModal').click(function(){
+				$('#modalMenu1').modal('hide'); 
+				$('#modalControls').modal('show');
+			});
+			$('#backControlsToPause').click(function(){
+				$('#modalControls').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			$('#contClose').click(function(){
+				$('#modalControls').modal('hide');
+				$('#modalMenu1').modal('show');
+
+			});
+			/*Fin Controles Eventos*/
+
+			/*Fin Eventos de Menus*/
+
+		});
+	
+	</script>
 	
 	
 </head>
 <body id="indexBody">
-	
-	
+
 	
 	<!-- Menu modal -->
 
-	<div class="container">
-		
-		<div class="d-flex justify-content-center h-100">
-			<div class="card">
-				<div class="card-header">
-					<h3>Comenzar</h3>
-					<div class="d-flex justify-content-end social_icon">
-						
-					</div>
-				</div>
-				<div class="card-body">
-					<form>
-						<a href="pausa.html" class="btn btn-warning btn-block ini""><i class="fas fa-user"></i>  Jugar 1</a><br>
-						<a href="pausa.html" class="btn btn-warning btn-block ini""><i class="fas fa-user-friends"></i> Jugar 2</a><br>
-						<a href="controles.html" class="btn btn-warning btn-block ini""><i class="fas fa-gamepad"></i> Controles</a><br>
-						<a href="puntuaciones.html" class="btn btn-warning btn-block ini""><i class="fas fa-trophy"></i> Puntuaciones</a><br>
-						<a href="configuracion.html" class="btn btn-warning btn-block ini""><i class="fas fa-cog"></i> Configuracion</a><br>
-					</form>
-				</div>
-				
-			</div>
-		</div>
-		</div>
+	<!-- Menu principal -->
+	<div class="modal fade" id="modalMenu1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="exampleModalLabel">Pausa</h3>
+	        
+	      </div>
+	      <div class="modal-body">
+	        	<form>
+	        		<a href="pausa.html" class="btn btn-warning btn-block ini"><i class="fas fa-user"></i>  Jugar 1</a><br>
+					<a href="pausa.html" class="btn btn-warning btn-block ini"><i class="fas fa-user-friends"></i> Jugar 2</a><br>
+					<a href="#" class="btn btn-warning btn-block ini" id="rankModal"><i class="fas fa-gamepad"></i> Controles</a><br>
+					<a href="#" class="btn btn-warning btn-block ini" id="contModal"><i class="fas fa-trophy"></i> Puntuaciones</a><br>
+					<a href="#" class="btn btn-warning btn-block ini" id="confModal"><i class="fas fa-cog"></i> Configuracion</a><br>
+                </form>           
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin Menu Principal -->
 	
+	<!-- Menu Controles -->
+	<div class="modal fade" id="modalControls" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content" id="controlCard">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="exampleModalLabel">Controles</h3>
+	        <button type="button" class="close" data-dismiss="modal" id="contClose" aria-label="Close">
+	          <span aria-hidden="true"  id="xClose">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        	<form>
+	        		<a href="#" class="btn btn-warning btn-block ini" id="backControlsToPause"><i class="fas fa-backspace"></i> Regresar</a><br>
+						<ul class="list-group">
+						  <li class="list-group-item" id="titleControl"><i class="fas fa-keyboard"></i> Teclado</li>
+						  <li class="list-group-item"><i class="fas fa-arrow-right"></i></i> Derecha</li>
+						  <li class="list-group-item"><i class="fas fa-arrow-left"></i> Izquierda</li>
+						  <li class="list-group-item"><i class="fas fa-arrow-up"></i></i> Arriba</li>
+						  <li class="list-group-item"><i class="fas fa-arrow-down"></i> Abajo</a>
+						  <li class="list-group-item" id="titleControl"><i class="fas fa-gamepad"></i></i> Gamepad</li>
+						  <li class="list-group-item"><i class="fas fa-caret-square-right"></i></i> Derecha</li>
+						  <li class="list-group-item"><i class="fas fa-caret-square-left"></i></i> Izquierda</li>
+						  <li class="list-group-item"><i class="fas fa-caret-square-up"></i></i> Arriba</li>
+						  <li class="list-group-item"><i class="fas fa-caret-square-down"></i></i> Abajo</a>
+						</ul class="dropdown-menu" role="menu">
+                </form>           
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin Menu Controles -->
+
+	<!-- Menu Puntuaciones -->
+	<div class="modal fade" id="modalRanking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="exampleModalLabel">Puntuaciones</h3>
+	        <button type="button" class="close" data-dismiss="modal" id="rankingClose" aria-label="Close">
+	          <span aria-hidden="true"  id="xClose">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        	<form>
+	        		<a href="#" class="btn btn-warning btn-block ini" id="backRankingToPause"><i class="fas fa-backspace"></i> Regresar</a><br>
+						<div class="container2">
+						  <h2 class="h2score"><i class="fas fa-crown"></i> Ranking</h2>
+						  <table class="table table table-dark table-striped">
+						    <thead>
+						      <tr>
+						        <th>Nombre</th>
+						        <th>Score</th>
+						        <th>Compartir</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td>John</td>
+						        <td>2562</td>
+						        <td class="compartir">
+						        	<a class="iconsshare" href="https://www.facebook.com/"><i class="fab fa-facebook fa-lg"></i></a>
+									<a class="iconsshare" href="https://www.twitter.com/"><i class="fab fa-twitter-square fa-lg"></i></a>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td>Mary</td>
+						        <td>654</td>
+						       	<td class="compartir">
+						       		<a class="iconsshare" href="https://www.facebook.com/"><i class="fab fa-facebook fa-lg"></i></a>
+									<a class="iconsshare" href="https://www.twitter.com/"><i class="fab fa-twitter-square fa-lg"></i></a>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td>July</td>
+						        <td>456</td>
+						        <td class="compartir">
+						        	<a class="iconsshare" href="https://www.facebook.com/"><i class="fab fa-facebook fa-lg"></i></a>
+									<a class="iconsshare" href="https://www.twitter.com/"><i class="fab fa-twitter-square fa-lg"></i></a>
+						        </td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</div>
+                </form>           
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin Menu Puntuaciones -->
+
+	<!-- Menu Configuracion -->
+	<div class="modal fade" id="modalConfig" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="exampleModalLabel">Configuracion</h3>
+	        <button type="button" class="close" data-dismiss="modal" id="confClose" aria-label="Close">
+	          <span aria-hidden="true"  id="xClose">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        	<form>
+	        		<a href="#" class="btn btn-warning btn-block ini" id="backConfigToPause"><i class="fas fa-backspace"></i> Regresar</a><br>
+						<ul class="list-group">
+						  <li class="list-group-item" id="titleControl"></i> Titulo por asignar</li>
+						  <li class="list-group-item" id="titleControl"></i> Titulo por asignar</li>
+						  <li class="list-group-item" id="titleControl"></i> Titulo por asignar</li>
+						  <li class="list-group-item" id="titleControl"></i> Titulo por asignar</li>						  
+						</ul class="dropdown-menu" role="menu">
+                </form>           
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin Menu Configuracion -->
+
 	<!-- fin menu modal -->
 </body>
 </html>
