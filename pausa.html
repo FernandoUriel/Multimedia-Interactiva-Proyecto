@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<meta name=”viewport” content=”width=device-width, initial-scale=1″>
 	<script type="text/javascript" src="plugin/jQuery/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="plugin/css/all.css">
@@ -27,6 +28,8 @@
 
 		
 		$(document).ready(function() {
+
+			alert("Para activar el menu de pausa debe presionarse la tecla espacio en el teclado");
 
 			/*Eventos Menus*/
 
@@ -180,10 +183,28 @@
 			cube2.name="Cubo02";
 
 			render();
+
+			
+
+			document.getElementById("goToIndex").onclick = function() {exitGame()};
+
+		function exitGame(){
+			var r=confirm("¿Deseas salir del juego?");
+
+			if(r==true)
+			{
+				window.location.href = 'index.html';
+			}
+			else{
+
+			}
+		};
 		});
 
 		var direccionCubo01 = 1;
 		var direccionCubo02= -1;
+
+			
 
 		
 		document.addEventListener("keydown", onDocumentKeyDown, false);
@@ -240,7 +261,7 @@
 	
 	<!-- Menu modal -->
 	<!-- Menu de pausa -->
-	<div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -255,7 +276,7 @@
 					<a href="#" class="btn btn-warning btn-block ini" id="contModal" ><i class="fas fa-gamepad"></i> Controles</a><br>
 					<a href="#" class="btn btn-warning btn-block ini" id="rankModal" ><i class="fas fa-trophy"></i> Puntuaciones</a><br>
 					<a href="#" class="btn btn-warning btn-block ini" id="confModal"><i class="fas fa-cog"></i> Configuracion</a><br>
-					<a href="index.html" class="btn btn-danger btn-block ini" target="_blank"><i class="fas fa-sign-out-alt"></i> Salir</a><br>
+					<a href="#" class="btn btn-danger btn-block ini" id="goToIndex"><i class="fas fa-sign-out-alt"></i> Salir</a><br>
                 </form>           
 	      </div>
 	    </div>
@@ -264,7 +285,7 @@
 	<!-- fin menu de pausa -->
 
 	<!-- Menu Controles -->
-	<div class="modal fade" id="modalControls" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modalControls" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content" id="controlCard">
 	      <div class="modal-header">
@@ -296,7 +317,7 @@
 	<!-- Fin Menu Controles -->
 
 	<!-- Menu Puntuaciones -->
-	<div class="modal fade" id="modalRanking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modalRanking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -354,7 +375,7 @@
 	<!-- Fin Menu Puntuaciones -->
 
 	<!-- Menu Configuracion -->
-	<div class="modal fade" id="modalConfig" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modalConfig" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -380,5 +401,6 @@
 	<!-- Fin Menu Configuracion -->
 	
 	<!-- fin menu modal -->
+
 </body>
 </html>
