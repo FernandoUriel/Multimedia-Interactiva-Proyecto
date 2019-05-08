@@ -1,0 +1,27 @@
+newmtl Char:Line009SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd Bow.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 0.00
+newmtl Char:Line009SG2
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd Bow_Spec.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 0.00
+newmtl Char:Object019SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd Chibi_Character_.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 0.00

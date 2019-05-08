@@ -1,0 +1,64 @@
+newmtl SM_Log_Var01SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Pack_06_D.jpg
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl SM_Log_Var01SG1
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Wood_Oak_D.BMP
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl SM_StreetLight_LightsOnSG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Pack_03_D.BMP
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl StaticMeshSG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Pack_05_D.jpg
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_BrickWallWithLightGrout_basecolor.jpg
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd foto.jpg
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Brick_Clay_Beveled_D.jpg
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_Wood_Floor_Walnut_D.BMP
+Ni 1.00

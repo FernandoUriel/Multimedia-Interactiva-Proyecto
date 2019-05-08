@@ -1,0 +1,7 @@
+newmtl Boss:initialShadingGroup
+illum 4
+Kd 0.640000 0.640000 0.640000
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Sea-monster-TXu0v0.jpg
+Ni 1.00
