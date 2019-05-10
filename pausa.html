@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name=”viewport” content=”width=device-width, initial-scale=1″>
-	<script type="text/javascript" src="plugin/jQuery/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="plugin/jQuery/jquery-2.1.4.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="plugin/css/all.css">
 	<link rel="stylesheet" type="text/css" href="plugin/bootstrap43/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="plugin/css/style.css">
@@ -32,13 +32,19 @@
 		var clock;
 		var deltaTime;	
 		var keys = {};
-	
-
+		var char1= new THREE.Object3D();
+		var raycast;
+		var modelC = new THREE.Object3D();
+		var objetosConColision = [];
+		var isWorldReady = [ false];
 		
 		$(document).ready(function() {
 			setupScene();
-			alert("Para activar el menu de pausa debe presionarse la tecla espacio en el teclado");
+			//alert("Para activar el menu de pausa debe presionarse la tecla espacio en el teclado");
+			raycast = new THREE.Raycaster();
+			
 
+			 
 			/*Eventos Menus*/
 
 			/*Pausas Eventos*/
@@ -109,36 +115,38 @@
 			/*Fin Controles Eventos*/
 
 			/*Fin Eventos de Menus*/
-
+			
 			
 			loadOBJWithMTL(
 			"assets/",
-			"mapa.obj",
-			"mapa.mtl",
+			"floor1.obj",
+			"floor1.mtl",
 			(objeto3D) => {
 				// Objeto cargado y listo para ser manipulado.
 				scene.add(objeto3D);
 				objetosConColision.push(objeto3D);
+				//isWorldReady[0]=true;
+				
 				
 			}
 		);
 						loadOBJWithMTL(
 			"assets/",
-			"char.obj",
-			"char.mtl",
-			(chibi) => {
-				scene.add(chibi);
-				player2=chibi.clone();
-				player2.name='jugador2';
-				player2.position.x=2;	
-				scene.add(player2);
-				chibi.name='personaje';
-				objetosConColision.push(chibi);
-				objetosConColision.push(player2);
+			"Pj1.obj",
+			"Pj1.mtl",
+			(objeto3D) => {
+				objeto3D.position.y=3.5;
+				objeto3D.rotation.y=Math.PI / 2;
+				char1=objeto3D.clone();
+					
+				
+				scene.add(char1);
+				objetosConColision.push(char1);
+				
 				
 			}
 		);
-						loadOBJWithMTL(
+						/*loadOBJWithMTL(
 			"assets/",
 			"Boss.obj",
 			"Boss.mtl",
@@ -161,7 +169,7 @@
 				
 			}
 		);
-
+*/
 						
 					
 						
@@ -235,7 +243,8 @@
 		function render() {
 		requestAnimationFrame(render);
 		deltaTime = clock.getDelta();	
-		char=scene.getObjectByName('personaje');
+
+		
 		var char2=scene.getObjectByName('jugador2');
 
 		var yaw = 0;
@@ -243,17 +252,17 @@
 			if(isPlay==true){
 				if (keys["A"]) {
 			yaw = -3;
-			char.position.x-=(3 *deltaTime);
+			char1.position.x-=(3 *deltaTime);
 		} else if (keys["D"]) {
 			yaw = 3;
-			char.position.x+=(3 *deltaTime);
+			char1.position.x+=(3 *deltaTime);
 		}
 		if (keys["W"]) {
 			forward = 1;
-			char.position.y+=(1 *deltaTime);
+			char1.position.y+=(1 *deltaTime);
 		} else if (keys["S"]) {
 			forward = -1;
-			char.position.y-=(1 *deltaTime);
+			char1.position.y-=(1 *deltaTime);
 		}
 
 		if (keys["J"]) {
@@ -272,25 +281,48 @@
 		}
 			}
 		
-		
+		modelC.misRayos = [
+			new THREE.Vector3(1, 0, 0),
+			new THREE.Vector3(-1, 0, 0),
+			new THREE.Vector3(0, 0, 1),
+			new THREE.Vector3(0, 0, -1)
+		];
+			camera.translateY(forward * deltaTime);
+			camera.rotation.y += yaw * deltaTime;
+			
 
+			for(var i = 0; i < modelC.misRayos.length; i ++){
+
+				var rayo = modelC.misRayos[i];
 				
+				raycast.set( char1.position, rayo);
 
-		camera.translateX(yaw * deltaTime);
-		camera.translateY(forward * deltaTime);
-		
+				var colisiones = raycast.intersectObjects(objetosConColision, true);
+
+				if(colisiones.length > 0){
+
+					if(colisiones[0].distance < 3){
+						
+						char1.position.y+=(1 *deltaTime);
+						console.log("colisionando");
+					}					
+				}
+
+			}
+
+
+
 		
 
 		renderer.render(scene, camera);
 	}
-
 	function setupScene() {		
 		var visibleSize = { width: window.innerWidth, height: window.innerHeight};
 		
 		clock = new THREE.Clock();		
 		scene = new THREE.Scene();
 		camera = new THREE.PerspectiveCamera(75, visibleSize.width / visibleSize.height, 0.1, 100);
-		camera.position.z = 6;
+		camera.position.z = 8;
 		camera.position.y = 5;
 		camera.position.x = -1;
 
